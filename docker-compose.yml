@@ -12,9 +12,16 @@ services:
     command: -config.file=/etc/loki/loki-config.yml
 #
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana-enterprise:latest
     container_name: grafana
     user: ${PUID}
+    environment:
+      #- PUID=${PUID}
+      #- PGID=${PGID}
+      #- TZ=${TZ}
+      - GF_SERVER_ROOT_URL=${GF_SERVER_ROOT_URL}
+      - GF_INSTALL_PLUGINS=${GF_INSTALL_PLUGINS}
+
     volumes:
     - ${LOCVOL1}grafana/grafana:/var/lib/grafana
     ports:

@@ -12,7 +12,7 @@ services:
     command: -config.file=/etc/loki/loki-config.yml
 #
   grafana:
-    image: grafana/grafana-enterprise:latest
+    image: grafana/grafana:main #grafana/grafana-enterprise:latest
     container_name: grafana
     user: ${PUID}
     environment:

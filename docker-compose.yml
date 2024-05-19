@@ -1,0 +1,40 @@
+---
+services:
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    volumes:
+      #- ${LOCVOL1}grafana/loki/loki-config.yml:/etc/loki/loki-config.yml
+      - ${LOCVOL1}grafana/loki:/etc/loki
+    ports:
+      - 3100:3100
+    restart: unless-stopped
+    command: -config.file=/etc/loki/loki-config.yml
+#
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    user: ${PUID}
+    volumes:
+    - ${LOCVOL1}grafana/grafana:/var/lib/grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+#
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - /var/log:/var/log
+      - ${LOCVOL1}grafana/promtail:/etc/promtail
+    ports:
+      - 1514:1514 # this is only needed if you are going to send syslogs
+    restart: unless-stopped
+    command: -config.file=/etc/promtail/promtail-config.yml
+#
+#
+#
+networks:
+  default:
+    name: ${CONNET}
+    external: true

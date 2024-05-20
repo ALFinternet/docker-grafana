@@ -15,6 +15,7 @@ scrape_configs:
       - localhost
     labels:
       job: syslogs
+      facility: local0
       __path__: /syslogs/*log
   
 ## docker logs

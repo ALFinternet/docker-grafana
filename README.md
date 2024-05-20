@@ -9,11 +9,13 @@ git clone https://github.com/ALFinternet/docker-grafana.git ~/appdata/grafana
 
 ## install promtail via docker
 ```bash
-docker run \
--v /home/alf/appdata/promtail:/mnt/config \
--v /var/log:/var/log \
---config.file=/mnt/config/promtail-config.yml \
-grafana/promtail:latest
+docker run -d \
+  --name=promtail \
+  -v /home/alf/appdata/promtail:/mnt/config \
+  -v /var/log:/var/log \
+  --config.file=/mnt/config/promtail-config.yml \
+  --restart unless-stopped \
+  grafana/promtail:latest
 ```
 
 

@@ -27,3 +27,10 @@ mkdir appdata/grafana/loki
 mkdir appdata/grafana/promtail
 sudo chown -R 1000:1000 appdata/grafana
 ```
+
+
+
+### Links
+https://alexandre.deverteuil.net/post/syslog-relay-for-loki/
+https://www.syslog-ng.com/community/b/blog/posts/sending-logs-from-syslog-ng-to-grafana-loki
+https://grafana.com/blog/2021/03/23/how-i-fell-in-love-with-logs-thanks-to-grafana-loki/

@@ -13,9 +13,9 @@ docker run -d \
   --name=promtail \
   -v /home/alf/appdata/promtail:/mnt/config \
   -v /var/log:/var/log \
-  --config.file=/mnt/config/promtail-config.yml \
   --restart unless-stopped \
   grafana/promtail:latest
+  --config.file=/mnt/config/promtail-config.yml
 ```
 
 
